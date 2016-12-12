@@ -2,7 +2,7 @@
     <div class="wrapper">
         <embed class="content" style="visibility:{{visibility}}" repeat={{tabItems}} src={{src}} type="weex"></embed>
         <div class="tabbar" append = "tree">
-            <tabitem repeat={{tabItems}} index={{index}} icon={{icon}} title={{title}} title-color={{titleColor}}></tabitem>
+            <tabitem repeat={{tabItems}} index={{index}} icon={{icon}} title={{title}} title-color={{titleColor}} background-color={{backgroundColor}}></tabitem>
         </div>
     </div>
 </template>
@@ -40,8 +40,9 @@
         data: {
           tabItems: [ ],
           selectedIndex: 0,
-          selectedColor: '#ff0000',
-          unselectedColor: '#000000',
+          selectedColor: '#4a4542',
+          unselectedColor: '#8f8784',
+					backgroundColor: '#e7e2df'
         },
         created: function () {
           this.selected(this.selectedIndex);

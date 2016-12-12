@@ -1,6 +1,6 @@
 <template>
     <div class="container" style="background-color: {{backgroundColor}}"  onclick="onclickitem">
-        <image class="top-line" src = "http://gtms03.alicdn.com/tps/i3/TB1mdsiMpXXXXXpXXXXNw4JIXXX-640-4.png"></image>
+        <div class="top-line"></div>
         <image class="tab-icon" src = {{icon}}></image>
         <text class="tab-text" style="color: {{titleColor}}">{{title}}</text>
     </div>  
@@ -19,7 +19,8 @@
         top: 0; 
         left: 0; 
         right: 0; 
-        height: 2;
+        height: 1;
+				background-color:#c7c3c0;
     }
     .tab-icon {
         margin-top: 5; 
