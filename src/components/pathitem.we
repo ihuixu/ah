@@ -2,15 +2,16 @@
 	<cell class="container" onappear="onappear" ondisappear="ondisappear">
 		<div class="line"></div>
 
-		<div if="{{path_type == 'picture'}}">
-			<image class="picture" src="{{path_picture.url}}" style="height:{{path_picture.height}};width:{{path_picture.width}}"></image>
+		<div class="picture" if="{{path_type == 'picture'}}">
+			<image src="{{path_picture.url}}" style="height:{{path_picture.height}};width:{{path_picture.width}}"></image>
 		</div>
 
-		<div if="{{path_type == 'text'}}">
-			<text class="text">{{path_text}}</text>
+		<div class="text" if="{{path_type == 'text'}}">
+			<div class="text-left"></div>
+			<text>{{path_text}}</text>
 		</div>
 
-		<div if="{{path_type == 'position'}}">
+		<div class="position" if="{{path_type == 'position'}}">
 			<image class="icon" src=""></image>
 		</div>
 
@@ -55,6 +56,18 @@
 	font-size:26;
 	line-height:32;
 	min-height:60;
+}
+.text-left{
+	position:absolute;
+	left:-17;
+	top:20;
+
+	width:0;
+	height:0;
+	border-top:12px solid #f5f0ed;
+	border-bottom:12px solid #f5f0ed;
+	border-left:12px solid #f5f0ed;
+	border-right:12px solid #fff;
 }
 .picture{
 	margin:10;
