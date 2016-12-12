@@ -1,101 +1,98 @@
 <template>
-    <div class="wrapper">
-        <embed class="content" style="visibility:{{visibility}}" repeat={{tabItems}} src={{src}} type="weex"></embed>
-        <div class="tabbar" append="tree">
-            <tabitem repeat={{tabItems}} index={{index}} icon={{icon}} title={{title}} title-color={{titleColor}} background-color={{backgroundColor}}></tabitem>
-        </div>
-    </div>
+<div class="wrapper">
+	<embed class="content" style="visibility:{{visibility}}" repeat={{tabItems}} src={{src}} type="weex"></embed>
+	<div class="tabbar" append="tree">
+		<tabitem repeat={{tabItems}} index={{index}} icon={{icon}} title={{title}} title-color={{titleColor}} background-color={{backgroundColor}}></tabitem>
+	</div>
+</div>
 </template>
 
 <style>
-    .wrapper { 
-        position: absolute; 
-        top: 0; 
-        left: 0; 
-        right: 0; 
-        bottom: 0;
-    }
-    .content { 
-        position: absolute; 
-        top: 0; left: 0; 
-        right: 0; 
-        bottom: 0; 
-        margin-top: 0;  
-        margin-bottom: 88;
-    }
-    .tabbar { 
-        flex-direction: row; 
-        position: fixed; 
-        bottom: 0; 
-        left: 0; 
-        right: 0;  
-        height: 88;
-    }
+.wrapper { 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	right: 0; 
+	bottom: 0;
+}
+.content { 
+	position: absolute; 
+	top: 0; left: 0; 
+	right: 0; 
+	bottom: 0; 
+	margin-top: 0;  
+	margin-bottom: 88;
+}
+.tabbar { 
+	flex-direction: row; 
+	position: fixed; 
+	bottom: 0; 
+	left: 0; 
+	right: 0;  
+	height: 88;
+}
 </style>
 
 <script>
-	require('./tabitem.we')
-	module.exports = {
-			data: {
-				tabItems: [
-        {
-          index: 0,
-          image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
-          selectedImage: 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png',
-          src: '/dist/path.js',
-          visibility: 'visible',
-					title: 'Timeline',
-          titleColor: '#8f8784',
-					icon:''
-        },
-        {
-          index: 1,
-          image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
-          selectedImage: 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png',
-          src: '/dist/test.js',
-          visibility: 'hidden',
-					title: 'Me',
-          titleColor: '#8f8784',
-					icon:''
-        }
+require('./tabitem.we')
+module.exports = {
+	data: {
+		tabItems: [
+			{
+				index: 0,
+				image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
+				selectedImage: 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png',
+				src: '/dist/path.js',
+				visibility: 'visible',
+				title: 'Timeline',
+				titleColor: '#8f8784',
+				icon:''
+			},
+			{
+				index: 1,
+				image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
+				selectedImage: 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png',
+				src: '/dist/test.js',
+				visibility: 'hidden',
+				title: 'Me',
+				titleColor: '#8f8784',
+				icon:''
+			}
+		],
+		selectedIndex: 0,
+		selectedColor: '#4a4542',
+		unselectedColor: '#8f8784',
+		backgroundColor: '#e7e2df'
+	},
+	created: function () {
+		this.selected(this.selectedIndex);
 
-      ],
+		this.$on('tabItem.onClick',function(e){
+			var detail= e.detail;
+			this.selectedIndex = detail.index;
+			this.selected(detail.index);
 
-			selectedIndex: 0,
-			selectedColor: '#4a4542',
-			unselectedColor: '#8f8784',
-			backgroundColor: '#e7e2df'
-		},
-		created: function () {
-			this.selected(this.selectedIndex);
-
-			this.$on('tabItem.onClick',function(e){
-				var detail= e.detail;
-				this.selectedIndex = detail.index;
-				this.selected(detail.index);
-
-				var params = {
-					index: detail.index
-				};
-				this.$dispatch('tabBar.onClick', params);
-			});
-		},
-		methods: {
-				selected: function(index) {
-					for(var i = 0; i < this.tabItems.length; i++) {
-						var tabItem = this.tabItems[i];
-						if(i == index){
-							tabItem.icon = tabItem.selectedImage;
-							tabItem.titleColor = this.selectedColor;
-							tabItem.visibility = 'visible';
-						}
-						else {
-							tabItem.icon = tabItem.image;
-							tabItem.titleColor = this.unselectedColor;
-							tabItem.visibility = 'hidden';
-						}
-					}
-				},  
-		}
+			var params = {
+				index: detail.index
+			};
+			this.$dispatch('tabBar.onClick', params);
+		});
+	},
+	methods: {
+		selected: function(index) {
+			for(var i = 0; i < this.tabItems.length; i++) {
+				var tabItem = this.tabItems[i];
+				if(i == index){
+					tabItem.icon = tabItem.selectedImage;
+					tabItem.titleColor = this.selectedColor;
+					tabItem.visibility = 'visible';
+				}else {
+					tabItem.icon = tabItem.image;
+					tabItem.titleColor = this.unselectedColor;
+					tabItem.visibility = 'hidden';
+				}
+			}
+		},  
+	}
 }
 </script>

@@ -1,27 +1,27 @@
 <template>
 	<div class="container">
-    <cell class="item">
-      <text class="item-title">row {{item.id}} {{index}}</text>
-    </cell>
+		<cell class="item">
+			<text class="item-title">row {{item.id}} {{index}}</text>
+		</cell>
 	</div>  
 </template>
 
 <style>
-  .item {
-    justify-content: center;
-    border-bottom-width: 2;
-    border-bottom-color: #c0c0c0;
-    height: 200;
-    padding: 20;
-  }
+.item {
+	justify-content: center;
+	border-bottom-width: 2;
+	border-bottom-color: #c0c0c0;
+	height: 200;
+	padding: 20;
+}
 
 </style>
 
 <script>
-    module.exports = {
-        data: {
-        },
-        methods: {
-        }
-    }
+module.exports = {
+	data: {
+	},
+	methods: {
+	}
+}
 </script>
