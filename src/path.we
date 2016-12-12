@@ -1,58 +1,58 @@
 <template>
-<div class="container">
+	<div class="container">
 	<list class="list">
 		<pathitem repeat="item in rows" item="{{item}}" index="{{$index}}">
 		</pathitem>
-  </list>
+	</list>
 
 </div>
 </template>
 
 <style>
 
-	.container{
-		background-color:#f5f0ed;
-	}
-  .list {
-    position:absolute;top:0px;bottom:0px;left:0px;right:0px;
-  }
+.container{
+	background-color:#f5f0ed;
+}
+.list {
+	position:absolute;top:0px;bottom:0px;left:0px;right:0px;
+}
 
 </style>
 
 <script>
-	require('./components/pathitem.we');
-  module.exports = {
-			data : {
-				rows : []
-				, currentIndex : 0
-				, appearIndexes : []
+require('./components/pathitem.we');
+module.exports = {
+	data : {
+		rows : []
+		, currentIndex : 0
+		, appearIndexes : []
+	}
+	, created: function () {
+		for (var i = 0; i < 10; i++) {
+			this.rows.push({
+				id: i*2
+			})
+		}
+	}
+	, methods: {
+		onappear : function(e){
+			var index = e.target.attr.index
+			var i = this.appearIndexes.indexOf(index)
+			if(i == -1){
+				this.appearIndexes.push(index)
+				this.appearIndexes.sort()
 			}
-			, created: function () {
-				for (var i = 0; i < 10; i++) {
-					this.rows.push({
-						id: i*2
-					})
-				}
+
+			this.currentIndex = this.appearIndexes[0] 
+		}
+		, ondisappear : function(e){
+
+			var index = e.target.attr.index
+			var i = this.appearIndexes.indexOf(index)
+			if(i > -1){
+				this.appearIndexes.splice(i, 1)
 			}
-      , methods: {
-				onappear : function(e){
-					var index = e.target.attr.index
-					var i = this.appearIndexes.indexOf(index)
-					if(i == -1){
-						this.appearIndexes.push(index)
-						this.appearIndexes.sort()
-					}
-
-					this.currentIndex = this.appearIndexes[0] 
-				}
-				, ondisappear : function(e){
-
-					var index = e.target.attr.index
-					var i = this.appearIndexes.indexOf(index)
-					if(i > -1){
-						this.appearIndexes.splice(i, 1)
-					}
-				}
-      }
-  }
+		}
+	}
+}
 </script>

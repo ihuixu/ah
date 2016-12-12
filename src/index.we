@@ -1,7 +1,7 @@
 <template>
-  <div class="index-body">
-    <tabbar></tabbar>
-  </div>
+	<div class="index-body">
+		<tabbar></tabbar>
+	</div>
 </template>
 
 
@@ -12,17 +12,17 @@
 </style>
 
 <script>
-  require('./components/tabbar.we');
-  module.exports = {
-    data: {
-		},
-    created: function() {
-      var vm = this;
-      vm.$on('tabBar.onClick',function(e){
-        var detail= e.detail;
-        console.log('tabBar.onClick ' + detail.index);
-      });
-    },
-    methods: {}
-  }
+require('./components/tabbar.we');
+module.exports = {
+	data: {
+	},
+	created: function() {
+		var vm = this;
+		vm.$on('tabBar.onClick',function(e){
+			var detail= e.detail;
+			console.log('tabBar.onClick ' + detail.index);
+		});
+	},
+	methods: {}
+}
 </script>
