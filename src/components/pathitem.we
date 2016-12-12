@@ -7,12 +7,13 @@
 		</div>
 
 		<div class="text" if="{{path_type == 'text'}}">
-			<div class="text-left"></div>
-			<text>{{path_text}}</text>
+			<div class="text-icon"></div>
+			<div class="text-arrow"></div>
+			<text class="text-content">{{path_text}}</text>
 		</div>
 
 		<div class="position" if="{{path_type == 'position'}}">
-			<image class="icon" src=""></image>
+			<image class="position-icon" src="{{icon.position}}"></image>
 		</div>
 
 		<image class="avantar" src="{{user_avantar}}"></image>
@@ -37,34 +38,51 @@
 	left:120;
 	background-color: #e5e0dd;
 }
-.icon{
+
+.position{
+	margin-left:122;
+}
+.position-icon{
 	border-radius:100;
-	width:46;
-	height:46;
+	width:40;
+	height:40;
 	background-color: #e5e0dd;
-	margin:26;
+	margin-top:30;
+	margin-bottom:30;
+	margin-left:-22;
 }
 .text{
-	margin-left:120;
-	background-color:#ffffff;
-	border-radius:10;
-	margin-left:150;
+	margin-left:122;
 	margin-top:20;
 	margin-bottom:20;
 	margin-right:20;
+}
+.text-content{
+	background-color:#ffffff;
+	border-radius:10;
 	padding:16;
 	font-size:26;
 	line-height:32;
 	min-height:60;
+	margin-left:30;
 }
-.text-left{
+.text-arrow{
 	position:absolute;
-	left:-10;
+	left:16;
 	top:20;
 
 	width:16;
 	height:16;
 	background-color:#fff;
+}
+.text-icon{
+	position:absolute;
+	left:-10;
+	top:20;
+	border-radius:100;
+	width:18;
+	height:18;
+	background-color: #6f695b;
 }
 .picture{
 	margin:10;
@@ -78,6 +96,9 @@ require('weex-components');
 
 module.exports = {
 	data: {
+		icon : {
+	//		position : 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png'
+		}
 	},
 	methods: {
 		onappear : function(){
