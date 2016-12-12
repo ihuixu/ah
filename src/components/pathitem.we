@@ -1,9 +1,7 @@
 <template>
-	<div class="container">
-		<cell class="item">
-			<text class="item-title">row {{item.id}} {{index}}</text>
-		</cell>
-	</div>  
+	<cell class="item" onappear="onappear" ondisappear="ondisappear">
+		<text class="item-title">row {{item.id}} {{index}}</text>
+	</cell>
 </template>
 
 <style>
@@ -22,6 +20,20 @@ module.exports = {
 	data: {
 	},
 	methods: {
+		onappear : function(){
+			var vm = this;
+			var params = {
+				index: vm.index
+			};
+			vm.$dispatch('pathItem.onAppear', params);
+		}
+		, ondisappear : function(){
+			var vm = this;
+			var params = {
+				index: vm.index
+			};
+			vm.$dispatch('pathItem.onDisappear', params);
+		}
 	}
 }
 </script>

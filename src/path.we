@@ -33,10 +33,20 @@ module.exports = {
 				id: i*2
 			})
 		}
+
+		var vm = this
+		vm.$on('pathItem.onAppear',function(e){
+			var detail= e.detail;
+			vm.onappear(detail.index)
+		})
+
+		vm.$on('pathItem.onDisappear',function(e){
+			var detail= e.detail;
+			vm.ondisappear(detail.index)
+		})
 	}
 	, methods: {
-		onappear : function(e){
-			var index = e.target.attr.index
+		onappear : function(index){
 			var i = this.appearIndexes.indexOf(index)
 			if(i == -1){
 				this.appearIndexes.push(index)
@@ -45,9 +55,7 @@ module.exports = {
 
 			this.currentIndex = this.appearIndexes[0] 
 		}
-		, ondisappear : function(e){
-
-			var index = e.target.attr.index
+		, ondisappear : function(index){
 			var i = this.appearIndexes.indexOf(index)
 			if(i > -1){
 				this.appearIndexes.splice(i, 1)
