@@ -1,8 +1,7 @@
 <template>
-	<div class="container">
+<div class="container">
 	<list class="list">
-		<pathitem repeat="item in rows" item="{{item}}" index="{{$index}}">
-		</pathitem>
+		<pathitem repeat="{{rows}}"></pathitem>
 	</list>
 
 </div>
@@ -23,17 +22,76 @@
 require('./components/pathitem.we');
 module.exports = {
 	data : {
-		rows : []
+		rows : [
+			{
+				path_id:1
+				, path_type:'picture'
+				, path_picture:{
+					url:'http://oi2m0mptm.bkt.clouddn.com/user_upload/test.jpg'
+					, height:730
+					, width:730
+				}
+				, user_id:1
+				, user_avantar:''
+			}
+			, {
+				path_id:10
+				, path_type:'picture'
+				, path_picture:{
+					url:'http://oi2m0mptm.bkt.clouddn.com/user_upload/test.jpg'
+					, height:730
+					, width:730
+				}
+				, user_id:1
+				, user_avantar:''
+			}
+			, {
+				path_id:11
+				, path_type:'picture'
+				, path_picture:{
+					url:''
+					, height:130
+					, width:730
+				}
+				, user_id:1
+				, user_avantar:''
+			}
+
+
+			, {
+				path_id:4
+				, path_type:'text'
+				, path_text:'啦啦啦啦啊啦啦啦啦啦ladasfdsafdsafdsdfsfdsafdsfdfsa啦1234567fdadsfdssd'
+				, user_id:1
+				, user_avantar:''
+			}
+
+			, {
+				path_id:8
+				, path_type:'text'
+				, path_text:''
+				, user_id:1
+				, user_avantar:''
+			}
+			, {
+				path_id:6
+				, path_type:'text'
+				, path_text:'啦啦啦啦啊啦啦啦啦啦l'
+				, user_id:1
+				, user_avantar:''
+			}
+			, {
+				path_id:5
+				, path_type:'position'
+				, path_position:{}
+				, user_id:1
+				, user_avantar:''
+			}
+		]
 		, currentIndex : 0
 		, appearIndexes : []
 	}
 	, created: function () {
-		for (var i = 0; i < 10; i++) {
-			this.rows.push({
-				id: i*2
-			})
-		}
-
 		var vm = this
 		vm.$on('pathItem.onAppear',function(e){
 			var detail= e.detail;

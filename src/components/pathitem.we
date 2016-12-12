@@ -1,21 +1,71 @@
 <template>
-	<cell class="item" onappear="onappear" ondisappear="ondisappear">
-		<text class="item-title">row {{item.id}} {{index}}</text>
+	<cell class="container" onappear="onappear" ondisappear="ondisappear">
+		<div class="line"></div>
+
+		<div if="{{path_type == 'picture'}}">
+			<image class="picture" src="{{path_picture.url}}" style="height:{{path_picture.height}};width:{{path_picture.width}}"></image>
+		</div>
+
+		<div if="{{path_type == 'text'}}">
+			<text class="text">{{path_text}}</text>
+		</div>
+
+		<div if="{{path_type == 'position'}}">
+			<image class="icon" src=""></image>
+		</div>
+
+		<image class="avantar" src="{{user_avantar}}"></image>
 	</cell>
 </template>
 
 <style>
-.item {
-	justify-content: center;
-	border-bottom-width: 2;
-	border-bottom-color: #c0c0c0;
-	height: 200;
-	padding: 20;
+.container{
+	border-bottom-width: 1;
+	border-bottom-color: #e5e0dd;
 }
-
+.avantar{
+	border-radius:10;
+	height:60;
+	width:60;
+	background-color: #e5e0dd;
+	margin:20;
+	position:absolute;
+}
+.line{
+	position:absolute;top:0;bottom:-10;width:2;
+	left:120;
+	background-color: #e5e0dd;
+}
+.icon{
+	border-radius:100;
+	width:46;
+	height:46;
+	background-color: #e5e0dd;
+	margin:26;
+}
+.text{
+	margin-left:120;
+	background-color:#ffffff;
+	border-radius:10;
+	margin-left:150;
+	margin-top:20;
+	margin-bottom:20;
+	margin-right:20;
+	padding:16;
+	font-size:26;
+	line-height:32;
+	min-height:60;
+}
+.picture{
+	margin:10;
+	border-radius:4;
+	background-color:#fff;
+}
 </style>
 
 <script>
+require('weex-components');
+
 module.exports = {
 	data: {
 	},
