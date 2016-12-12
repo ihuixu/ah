@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="path-body">
   <scroller class="list" onviewappear="{{viewappear}}" onviewdisappear="{{viewdisappear}}">
     <div class="item" repeat="value in rows" onappear="onappear" ondisappear="ondisappear" index="{{$index}}">
       <text>scroll {{value.id}}</text>
@@ -12,6 +12,10 @@
 </template>
 
 <style>
+
+	.path-body{
+		background-color:#f5f0ed;
+	}
   .list {
     height: 800;
   }
