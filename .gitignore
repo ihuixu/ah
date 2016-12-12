@@ -6,4 +6,5 @@ npm-debug.log
 /android
 android.config.json
 ios.config.json
+/weex_tmp
 *.log

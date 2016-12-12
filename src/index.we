@@ -1,6 +1,6 @@
 <template>
   <div class="index-body">
-    <wxc-tabbar tab-items="{{tabItems}}"></wxc-tabbar>
+    <tabbar tab-items="{{tabItems}}"></tabbar>
   </div>
 </template>
 
@@ -12,7 +12,7 @@
 </style>
 
 <script>
-  require('weex-components');
+  require('./components/tabbar.we');
   module.exports = {
     data: {
       dir: 'examples',
