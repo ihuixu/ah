@@ -1,0 +1,32 @@
+<template>
+  <div>
+    <text>this is text content</text>
+    <text value="this is text value"></text>
+    <text id="textid" onclick={{showtext}}>this is gettext content</text>
+    <text value="{{text}}"></text>
+    <text style="lines: 3;">Alan Mathison Turing ( 23 June 1912 – 7 June 1954) was an English computer scientist, mathematician, logician, cryptanalyst and theoretical biologist. He was highly influential in the development of theoretical computer science, providing a formalisation of the concepts of algorithm and computation with the Turing machine, which can be considered a model of a general purpose computer.Turing is widely considered to be the father of theoretical computer science and artificial intelligence.</text>
+</div>
+</template>
+
+<style>
+  .text {
+    font-size: 24;
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      price1: '99.99',
+      price2: '88.88',
+      text:''
+    },
+    methods: {
+      showtext: function(event) {
+        var textComponent = this.$el("textid");
+        this.text = textComponent.attr.value;
+      }
+    }
+  };
+</script>

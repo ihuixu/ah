@@ -1,0 +1,45 @@
+<template>
+  <div>
+    <wxc-tabbar tab-items="{{tabItems}}"></wxc-tabbar>
+  </div>
+</template>
+
+<script>
+  require('weex-components');
+  module.exports = {
+    data: {
+      dir: 'examples',
+      tabItems: [
+        {
+          index: 0,
+          title: 'tab1',
+          titleColor: '#000000',
+          icon: '',
+          image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
+          selectedImage: 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png',
+          src: '/dist/path.js?itemId=tab1',
+          visibility: 'visible',
+        },
+        {
+          index: 1,
+          title: 'tab2',
+          titleColor: '#000000',
+          icon: '',
+          image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
+          selectedImage: 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png',
+          src: '/dist/test.js?itemId=tab2',
+          visibility: 'visible',
+        }
+
+      ],
+    },
+    created: function() {
+      var vm = this;
+      vm.$on('tabBar.onClick',function(e){
+        var detail= e.detail;
+        console.log('tabBar.onClick ' + detail.index);
+      });
+    },
+    methods: {}
+  }
+</script>

@@ -1,0 +1,9 @@
+.*/*
+/node_modules
+npm-debug.log
+/dist
+/ios
+/android
+android.config.json
+ios.config.json
+*.log

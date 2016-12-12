@@ -1,0 +1,80 @@
+<template>
+<div>
+  <scroller class="list" onviewappear="{{viewappear}}" onviewdisappear="{{viewdisappear}}">
+    <div class="item" repeat="value in rows" onappear="onappear" ondisappear="ondisappear" index="{{$index}}">
+      <text>scroll {{value.id}}</text>
+    </div>
+    <div class="item">
+    </div>
+  </scroller>
+
+</div>
+</template>
+
+<style>
+  .list {
+    height: 800;
+  }
+
+  .count {
+    font-size: 48;
+    margin: 10;
+  }
+
+  .indicator {
+    height: 40;
+    width: 40;
+    color: #45b5f0;
+  }
+
+  .row {
+    width: 750;
+  }
+
+  .item {
+    justify-content: center;
+    border-bottom-width: 2;
+    border-bottom-color: #c0c0c0;
+    height: 200;
+    padding: 20;
+  }
+</style>
+
+<script>
+	require('weex-components');
+  var modal = require('@weex-module/modal')
+  module.exports = {
+			data : {
+				rows : []
+				, currentIndex : 0
+				, appearIndexes : []
+			}
+			, created: function () {
+				for (var i = 0; i < 10; i++) {
+					this.rows.push({
+						id: i
+					})
+				}
+			}
+      , methods: {
+				onappear : function(e){
+					var index = e.target.attr.index
+					var i = this.appearIndexes.indexOf(index)
+					if(i == -1){
+						this.appearIndexes.push(index)
+						this.appearIndexes.sort()
+					}
+
+					this.currentIndex = this.appearIndexes[0] 
+				}
+				, ondisappear : function(e){
+
+					var index = e.target.attr.index
+					var i = this.appearIndexes.indexOf(index)
+					if(i > -1){
+						this.appearIndexes.splice(i, 1)
+					}
+				}
+      }
+  }
+</script>
