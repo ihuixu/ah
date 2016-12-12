@@ -1,0 +1,18 @@
+<template>
+	<div class="container">
+		<text>123</text>
+	</div>
+</template>
+
+<style>
+</style>
+
+<script>
+
+module.exports = {
+	data: {
+	},
+	methods: {
+	}
+}
+</script>

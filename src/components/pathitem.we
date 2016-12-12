@@ -3,7 +3,13 @@
 		<div class="line"></div>
 
 		<div class="picture" if="{{path_type == 'picture'}}">
-			<image src="{{path_picture.url}}" style="height:{{path_picture.height}};width:{{path_picture.width}}"></image>
+			<image class="picture-content" src="{{path_picture.url}}" style="height:{{path_picture.height}};width:{{path_picture.width}}"></image>
+		</div>
+
+		<div class="position" if="{{path_type == 'position'}}">
+			<image class="position-icon" src="{{icon.position}}"></image>
+			<image class="position-content"></image>
+
 		</div>
 
 		<div class="text" if="{{path_type == 'text'}}">
@@ -12,12 +18,18 @@
 			<text class="text-content">{{path_text}}</text>
 		</div>
 
-		<div class="position" if="{{path_type == 'position'}}">
-			<image class="position-icon" src="{{icon.position}}"></image>
-			<image class="position-content"></image>
+		<image class="avantar" src="{{user_avantar}}"></image>
+
+
+		<div class="intro" if="{{path_intro !== null}}">
+			<div class="intro-arrow"></div>
+			<div class="intro-content">
+				<text>{{path_intro}}</text>
+				<commentitem repeat="{{comment}}"></commentitem>
+			</div>
 		</div>
 
-		<image class="avantar" src="{{user_avantar}}"></image>
+
 
 	</cell>
 </template>
@@ -65,7 +77,7 @@
 	font-size:16;
 	color:#aaa;
 	line-height:32;
-	min-height:360;
+	min-height:240;
 	margin-left:36;
 }
 
@@ -93,6 +105,7 @@
 	height:16;
 	background-color:#fff;
 }
+
 .text-icon{
 	position:absolute;
 	left:-10;
@@ -102,7 +115,36 @@
 	height:18;
 	background-color: #6f695b;
 }
+
+
+.intro{
+	margin-left:122;
+	margin-right:20;
+	margin-top:20;
+	margin-bottom:20;
+}
+.intro-content{
+	background-color:#ffffff;
+	border-radius:10;
+	padding:16;
+	margin-left:36;
+}
+.intro-arrow{
+	position:absolute;
+	left:60;
+	top:-16;
+
+	width:16;
+	height:16;
+	background-color:#fff;
+}
+
+
+
+
 .picture{
+}
+.picture-content{
 	margin:10;
 	border-radius:4;
 	background-color:#fff;
@@ -110,11 +152,14 @@
 </style>
 
 <script>
-require('weex-components');
+require('weex-components')
+require('./commentitem.we')
 
 module.exports = {
 	data: {
-		icon : {
+		path_intro:null
+		, path_position:null
+		, icon : {
 	//		position : 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png'
 		}
 	},
