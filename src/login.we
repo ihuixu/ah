@@ -1,0 +1,43 @@
+<template>
+  <div class="login-body">
+		<div class="button" onclick="onLoginClick"><text class="button-text">Log In</text></div>
+  </div>
+</template>
+
+<style>
+.login-body{
+	background-color:#e53017;
+	justify-content: center;
+	align-items:center;
+}
+.button{
+	border-width:1;
+	border-color:#f68468;
+	height:80;
+	width:320;
+	justify-content: center;
+	align-items:center;
+	border-radius:8;
+}
+.button-text{
+	color:#f68468;
+	align-items:center;
+}
+
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    methods: {
+			onLogin : function(){
+
+			}
+			, onLoginClick : function(){
+				this.onLogin()
+
+			}
+    }
+  };
+</script>
