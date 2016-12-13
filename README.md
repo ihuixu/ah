@@ -69,8 +69,8 @@ vm.$dispatch('eventname', params);
 
 ```javascript
 event:{
-  eventname : function(){
-  
+  eventname : function(data){
+    
   }
 }
 ```
@@ -80,5 +80,7 @@ event:{
 
 ```javascript
 this.$on('eventname',function(e){
+  var detail = e.detail
+})
 ```
 
