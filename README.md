@@ -25,3 +25,60 @@ weex最佳实践已总结入下文：
 
 * 原因：浏览器和客户端对布局的解释不一样
 * 解决：尽量把布局写齐写全写死，显示效果不完全依赖浏览器解析
+
+### 使用上与Vue不同的点
+
+#### 1.repeat vs for
+
+* list:[{id:1},{id:2}]
+
+
+```javascript
+<div repeat={{list}}>{{id}}</div>
+```
+
+vs
+
+```javascript
+<div v-for="item in list">{{item.id}}</div>
+```
+
+#### 2.if vs v-if
+
+#### 3.Vue.component({}) vs [name].we
+
+* weex 以文件路径定义组件
+
+#### 4.使用weex-components
+
+#### 5.weex特征
+
+* 总结在：https://github.com/alibaba/weex/blob/ec10e8d3e9946c88f11aa9237a0879d3c8d5aae3/doc/references/cheatsheet.md
+
+#### 6.onappear 和 ondisappear
+
+weex的组件通用事件
+
+#### 7.事件
+
+```javascript
+vm.$dispatch('eventname', params);
+```
+
+* vue：event下面添加方法
+
+```javascript
+event:{
+  eventname : function(){
+  
+  }
+}
+```
+
+
+* weex：created方法内添加
+
+```javascript
+this.$on('eventname',function(e){
+```
+
