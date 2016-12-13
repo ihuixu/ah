@@ -2,12 +2,76 @@
 # ah
 基于weex搭建的跨平台小应用
 
+### 快速开始
 
-### 初次尝试
+#### 最佳实践
 
-weex最佳实践已总结入下文：
+1.安装weex-toolkit
 
-* weex-实战：https://github.com/ihuixu/ihuixu.github.io/blob/master/_posts/2016-12-11-weex-%E5%AE%9E%E6%88%98.markdown
+```javascript
+npm install  -g  weex-toolkit
+```
+
+2.安装 weexpack
+
+```javascript
+npm install -g weexpack
+```
+
+
+3.新建项目
+
+```javascript
+weexpack init [name]
+cd [name]
+npm install
+```
+
+#### 如何开发模式
+
+1.package.json中的三种命令
+
+```javascript
+"scripts": {
+    "build": "webpack",
+    "dev": "webpack --watch",
+    "serve": "serve -p 8080"
+  }
+```
+
+2.开发模式
+
+```javascript
+npm run dev
+```
+
+3.在设备上访问
+
+```javascript
+weex src/app.we --qr
+```
+
+--qr 展示二维码，可使用weexplayground进行扫码访问
+
+4.浏览器上访问
+
+```javascript
+npm run serve
+```
+
+
+
+#### 如何debug
+
+1.浏览器：使用chrome development tools
+
+2.客户端：
+
+```javascript
+weex debug
+```
+
+
 
 ### 踩坑点
 
