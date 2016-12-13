@@ -1,10 +1,15 @@
 <template>
 	<div class="container">
-		<text>123</text>
+		<text class="comment-content">123</text>
 	</div>
 </template>
 
 <style>
+.comment-content{
+	font-size:26;
+}
+.container{
+}
 </style>
 
 <script>
